@@ -1,0 +1,511 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 1rem;
+}
+
+.emotionContainer {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.emotionFace {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  margin: 1rem 0;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 40px;
+  margin: 2rem auto;
+  padding: 0 120px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderContainer span {
+  position: absolute;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #666;
+}
+
+.sliderContainer span:first-child {
+  left: 0;
+}
+
+.sliderContainer span:last-child {
+  right: 0;
+}
+
+.slider {
+  width: 100%;
+  height: 16px;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  outline: none;
+  transition: background 0.3s ease;
+  margin: 0.5rem 0;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: currentColor;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: currentColor;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stagesContainer {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.stagesTitle {
+  margin-bottom: 1rem;
+  margin-left: 0;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.stageButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.stageButton {
+  padding: 0.75rem 1rem;
+  border: 1px solid;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.stageButton.selected {
+  color: white;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  gap: 1rem;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.addEmotionBtn,
+.continueBtn {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.addEmotionBtn {
+  border: 1px solid #ddd;
+  background: white;
+  color: #333;
+}
+
+.continueBtn {
+  border: none;
+  background: #b84b6c;
+  color: white;
+}
+
+.addEmotionBtn:hover {
+  background: #f5f5f5;
+}
+
+.continueBtn:hover:not(:disabled) {
+  background: #a43d5c;
+}
+
+.continueBtn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.navigationHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.backButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.backButton:hover {
+  color: #333;
+}
+
+.progress {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .emotionContainer {
+    padding: 2rem;
+  }
+
+  .emotionFace {
+    width: 130px;
+    height: 130px;
+  }
+
+  .sliderContainer {
+    max-width: 500px;
+  }
+
+  .stagesTitle {
+    font-size: 1.4rem;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .stageButton {
+    font-size: 1.1rem;
+  }
+
+  .addEmotionBtn,
+  .continueBtn {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .wrapper {
+    padding: 2rem;
+  }
+
+  .contentContainer {
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .emotionContainer {
+    padding: 2rem;
+  }
+
+  .emotionFace {
+    width: 150px;
+    height: 150px;
+  }
+
+  .sliderContainer {
+    width: 60%;
+    max-width: 600px;
+    gap: 1rem;
+  }
+
+  .sliderContainer span {
+    font-size: 1rem;
+  }
+
+  .stagesTitle {
+    font-size: 1.6rem;
+    margin-left: 50px;
+    text-align: left;
+  }
+
+  .stageButton {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .addEmotionBtn,
+  .continueBtn {
+    font-size: 1.2rem;
+  }
+
+  .backButton {
+    font-size: 1rem;
+  }
+
+  .progress {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stagesTitle {
+    margin-left: 100px;
+  }
+
+  .sliderContainer {
+    width: 50%;
+  }
+
+  .stageButton {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    padding: 0.75rem;
+  }
+
+  .emotionContainer {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .emotionFace {
+    width: 80px;
+    height: 80px;
+  }
+
+  .stageButton {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .addEmotionBtn,
+  .continueBtn {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .stageButton,
+  .addEmotionBtn,
+  .continueBtn,
+  .backButton {
+    min-height: 44px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 40px;
+  margin: 2rem auto;
+  padding: 0 120px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderContainer span {
+  position: absolute;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #666;
+}
+
+.sliderContainer span:first-child {
+  left: 0;
+}
+
+.sliderContainer span:last-child {
+  right: 0;
+}
+
+.slider {
+  width: 100%;
+  height: 16px;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .sliderContainer {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sliderContainer {
+    height: auto;
+    padding: 40px 0;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sliderContainer span {
+    position: static;
+    text-align: center;
+  }
+
+  .slider {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .sliderContainer {
+    padding: 0 0.25rem;
+  }
+
+  .sliderContainer span {
+    font-size: 0.75rem;
+    min-width: 50px;
+  }
+
+  .slider {
+    min-width: 120px;
+  }
+}
+
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .sliderContainer {
+    flex-direction: row;
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+
+  .slider {
+    min-width: 180px;
+  }
+}

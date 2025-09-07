@@ -1,0 +1,156 @@
+:global(body) {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  font-family: "Times New Roman", Times, serif;
+}
+
+:global(*) {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.appLayout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.appContainer {
+  display: flex;
+  flex: 1;
+}
+
+.contentArea {
+  flex: 1;
+  min-height: 100vh;
+  margin-left: 70px;
+  transition: margin-left 0.3s ease;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: auto;
+}
+
+.contentArea.expanded {
+  margin-left: 240px;
+}
+
+.backButtonContainer {
+  position: fixed;
+  top: 20px;
+  left: 90px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.backButtonContainer:hover {
+  transform: scale(1.05);
+}
+
+.backButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #e66e6e;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .contentArea {
+    margin-left: 60px;
+  }
+
+  .contentArea.expanded {
+    margin-left: 200px;
+  }
+
+  .backButtonContainer {
+    left: 80px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .contentArea {
+    margin-left: 60px;
+  }
+
+  .contentArea.expanded {
+    margin-left: 180px;
+  }
+
+  .backButtonContainer {
+    left: 70px;
+  }
+
+  .backButton {
+    font-size: 14px;
+  }
+
+  .backButton img {
+    width: 20px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contentArea {
+    margin-left: 50px;
+  }
+
+  .contentArea.expanded {
+    margin-left: 160px;
+  }
+
+  .backButtonContainer {
+    left: 60px;
+    top: 15px;
+    padding: 6px 12px;
+  }
+
+  .backButton {
+    font-size: 12px;
+  }
+
+  .backButton img {
+    width: 16px;
+    height: auto;
+  }
+}
+
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .contentArea {
+    margin-left: 50px;
+  }
+
+  .contentArea.expanded {
+    margin-left: 160px;
+  }
+
+  .backButtonContainer {
+    left: 60px;
+    top: 10px;
+    padding: 6px 12px;
+  }
+
+  .backButton {
+    font-size: 12px;
+  }
+
+  .backButton img {
+    width: 16px;
+    height: auto;
+  }
+}

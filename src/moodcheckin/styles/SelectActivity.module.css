@@ -1,0 +1,360 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.mainContainer {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.emotionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.emotionsDisplay {
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emotionRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.bulletPoint {
+  color: #666;
+}
+
+.emotionsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.activityGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2px;
+  justify-content: center;
+}
+
+.activityButton {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activityButton.selected {
+  background: #b84b6c;
+  border-color: #b84b6c;
+  color: white;
+}
+
+.activityButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.completeButton {
+  margin-top: 2rem;
+  padding: 1rem 4rem;
+  background: #b84b6c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.completeButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.activitiesContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emotionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.emotionsLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emotionNames {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.bulletPoint {
+  color: #666;
+}
+
+.emotionsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tag {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.emotionsRight {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.emotionIconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.emotionIcon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.emotionLabel {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .activitiesContainer {
+    gap: 0.8rem;
+  }
+
+  .emotionsContainer {
+    padding: 1.2rem;
+  }
+
+  .emotionIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .activityGroup {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .activitiesContainer {
+    gap: 0.6rem;
+  }
+
+  .emotionsContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .emotionsLeft {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .emotionsRight {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .emotionNames {
+    justify-content: center;
+    text-align: center;
+    gap: 0.3rem;
+  }
+
+  .emotionsTags {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .activityGroup {
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  .activityButton {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .activitiesContainer {
+    gap: 0.4rem;
+  }
+
+  .emotionsContainer {
+    padding: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .emotionsLeft {
+    gap: 0.8rem;
+  }
+
+  .emotionNames {
+    font-size: 0.9rem;
+  }
+
+  .emotionsTags {
+    gap: 0.4rem;
+  }
+
+  .tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .emotionIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .activityGroup {
+    gap: 0.4rem;
+  }
+
+  .activityButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .emotionsContainer {
+    padding: 0.6rem;
+  }
+
+  .emotionNames {
+    font-size: 0.8rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .emotionIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .activityButton {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .emotionsContainer {
+    flex-direction: row;
+    padding: 0.8rem;
+    gap: 1rem;
+  }
+
+  .emotionsLeft {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .emotionNames {
+    justify-content: flex-start;
+  }
+
+  .emotionsTags {
+    justify-content: flex-start;
+  }
+
+  .emotionIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .activityGroup {
+    justify-content: flex-start;
+  }
+}

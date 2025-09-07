@@ -1,0 +1,191 @@
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  min-height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.title {
+  color: #4a4a4a;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  font-size: 1.6rem;
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.moodButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.moodButton:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.moodButton.selected {
+  border-color: #156734;
+  background: rgba(21, 103, 52, 0.2);
+}
+
+.moodIcon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.helper {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+}
+
+.completeButton {
+  background: #a74c67;
+  color: white;
+  border: none;
+  padding: 1.2rem 8rem;
+  border-radius: 12px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.completeButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.completeButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    max-width: 90%;
+    min-height: 450px;
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .moodGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .moodGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .moodIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .helper {
+    font-size: 1.2rem;
+  }
+
+  .completeButton {
+    padding: 1rem 4rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .moodGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .moodIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .helper {
+    font-size: 1rem;
+  }
+
+  .completeButton {
+    padding: 0.8rem 3rem;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}
