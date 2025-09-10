@@ -1,3 +1,9 @@
+/* Logout button hover effect */
+.logoutButton:hover {
+  background:  #1558e7 !important; /* green-500 */
+  color: #fff !important;
+  transition: background 0.2s, color 0.2s;
+}
 .sidebar {
   width: 70px;
   background: rgba(255, 255, 255, 0.9);
@@ -37,19 +43,28 @@
 
 .expandButton {
   position: absolute;
-  right: -12px;
+  right: -16px;
   top: 20px;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border: 2px solid #e0e7ef;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #666;
-  transition: transform 0.3s ease;
+  color: #4b5563;
+  font-size: 1.5rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  z-index: 10;
+}
+
+.expandButton:hover {
+  background: #f3f6fa;
+  color: #2563eb;
+  box-shadow: 0 4px 16px 0 rgba(37,99,235,0.08);
 }
 
 .navigation {

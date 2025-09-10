@@ -6,6 +6,8 @@ import EmotionResults from "../moodcheckin/pages/EmotionResults";
 import SelectActivity from "../moodcheckin/pages/SelectActivity";
 import Success from "../moodcheckin/pages/Success";
 import Analytics from '../moodcheckin/pages/Analytics';
+import Login from '../moodcheckin/pages/Login';
+import Signup from '../moodcheckin/pages/Signup';
 
 function AppRoutes() {
   return (
@@ -17,6 +19,8 @@ function AppRoutes() {
       <Route path="/select-activity" element={<SelectActivity />} />
       <Route path="/success" element={<Success />} />
       <Route path="/analytics" element={<Analytics />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 }

@@ -14,14 +14,47 @@ import avatar2 from "../assets/landing/Footer.png";
 
 function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem('user');
+
+  useEffect(() => {
+    // Try to get user name from localStorage
+    const user = localStorage.getItem('user');
+    if (user) {
+      try {
+        // Try to parse as JSON (for new format)
+        const userObj = JSON.parse(user);
+        if (userObj && userObj.name) {
+          setUserName(userObj.name);
+        } else if (typeof user === 'string') {
+          setUserName(user); // fallback for old format
+        }
+      } catch {
+        setUserName(user); // fallback for old format
+      }
+    } else {
+      setUserName("");
+    }
+  }, []);
+
+  // Handler for profile click
+  const handleProfileClick = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  };
+
+  // Handler for logout
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUserName("");
+    navigate('/'); // Redirect to instructions/landing page
+  };
 
   const menuItems = [
     { icon: <RiHome5Line />, label: "Dashboard", path: "/" },
     { icon: <RiPulseLine />, label: "Activity", path: "/activity" },
-    { icon: <RiPlayCircleLine />, label: "Resources", path: "/resources" },
-    { icon: <BsChatDots />, label: "Counseling", path: "/counseling" },
-    { icon: <FaUsers />, label: "Community", path: "/community" },
     { icon: <BsBell />, label: "Notifications", path: "/notifications" },
     { icon: <BiSupport />, label: "Support", path: "/support" },
   ];
@@ -60,7 +93,7 @@ function Sidebar() {
       <nav className={styles.navigation}>
         {menuItems.map((item) => (
           <button
-            key={item.label} 
+            key={item.label}
             className={styles.navItem}
             onClick={() => item.path && navigate(item.path)}
           >
@@ -70,9 +103,43 @@ function Sidebar() {
         ))}
       </nav>
 
-      <div className={styles.userProfile}>
-        <img src={avatar2} alt="Avatar" className={styles.profileImage} />
-        {isExpanded && <span className={styles.userName}>Sandhya S</span>}
+      <div className={styles.userProfile} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {isLoggedIn ? (
+          <>
+            <img src={avatar2} alt="Avatar" className={styles.profileImage} />
+            {isExpanded && (
+              <>
+                <span className={styles.userName}>{userName || "User"}</span>
+                <button
+                  className={styles.logoutButton}
+                  style={{ marginTop: 8, padding: '4px 12px', fontSize: 12, borderRadius: 6, border: 'none', background: '#0a9cf0ff', cursor: 'pointer' }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            )}
+          </>
+        ) : (
+          isExpanded && (
+            <>
+              <button
+                className={styles.logoutButton}
+                style={{ margin: '4px 0', padding: '4px 12px', fontSize: 12, borderRadius: 6, border: 'none', background: '#3c7aeeff', color: '#fff', cursor: 'pointer' }}
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </button>
+              <button
+                className={styles.logoutButton}
+                style={{ margin: '4px 0', padding: '4px 12px', fontSize: 12, borderRadius: 6, border: 'none', background: '#3c7aeeff', color: '#fff', cursor: 'pointer' }}
+                onClick={() => navigate('/signup')}
+              >
+                Signup
+              </button>
+            </>
+          )
+        )}
       </div>
     </aside>
   );

@@ -5,6 +5,8 @@ import styles from "./App.module.css";
 import background from "./assets/landing/Bg.png";
 import backIcon from "./assets/landing/carousel back.png";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ function App() {
           </button>
         </div>
         <AppRoutes />
+        <ToastContainer />
       </main>
     </div>
   );
