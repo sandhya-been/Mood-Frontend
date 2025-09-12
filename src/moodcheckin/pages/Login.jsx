@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
@@ -5,22 +6,30 @@ import styles from "./Auth.module.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    let name = "";
-    const users = localStorage.getItem("users"); 
-    if (users) {
-      try {
-        const usersArr = JSON.parse(users);
-        const found = usersArr.find(u => u.email === email);
-        if (found && found.name) name = found.name;
-      } catch {}
+    setError("");
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.message || "Login failed");
+        return;
+      }
+   
+      const name = (data.firstName || "") + (data.lastName ? " " + data.lastName : "");
+      localStorage.setItem("user", JSON.stringify({ name, email: data.email, token: data.token }));
+      navigate("/");
+    } catch (err) {
+      setError("Server error. Please try again later.");
     }
-    if (!name) name = email;
-    localStorage.setItem("user", JSON.stringify({ name, email }));
-    navigate("/");
   };
 
   return (
@@ -43,6 +52,7 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <p>
         Don't have an account?{' '}
         <span className={styles.link} onClick={() => navigate("/")}>Sign up</span>

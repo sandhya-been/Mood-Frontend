@@ -8,13 +8,10 @@ import vectorIcon from "../../assets/landing/Vector.png";
 
 function Landing() {
   const navigate = useNavigate();
-  // Check if user is logged in
   let user = null;
   try {
     user = JSON.parse(localStorage.getItem("user"));
   } catch {}
-
-  // Handler for Start Check-in
   const handleStartCheckin = () => {
     if (!user) {
       navigate("/signup");
