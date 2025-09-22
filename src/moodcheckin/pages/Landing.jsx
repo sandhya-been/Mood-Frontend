@@ -5,6 +5,8 @@ import subtract from "../../assets/landing/Subtract.png";
 import tickIcon from "../../assets/landing/check read.png";
 import handIcon from "../../assets/landing/Select.png";
 import vectorIcon from "../../assets/landing/Vector.png";
+import profileboy from "../../assets/landing/profileboy.png";
+import profilegirl from "../../assets/landing/profilegirl.png";
 
 function Landing() {
   const navigate = useNavigate();
@@ -12,6 +14,13 @@ function Landing() {
   try {
     user = JSON.parse(localStorage.getItem("user"));
   } catch {}
+  // Determine profile image based on user type
+  let profileImage = null;
+  if (user && user.profileType === "boy") {
+    profileImage = profileboy;
+  } else if (user && user.profileType === "girl") {
+    profileImage = profilegirl;
+  }
   const handleStartCheckin = () => {
     if (!user) {
       navigate("/signup");
@@ -28,6 +37,10 @@ function Landing() {
           style={{ backgroundImage: `url(${subtract})` }}
         >
           <div className={styles.cardContent}>
+            {/* Show profile image if user is logged in */}
+            {profileImage && (
+              <img src={profileImage} alt="Profile" className={styles.profileImage} />
+            )}
             <img src={group} alt="Book emoji" className={styles.emoji} />
             <h1 className={styles.title}>Instructions</h1>
             <p className={styles.subtitle}>

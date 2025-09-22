@@ -5,8 +5,10 @@ import { RiHome5Line, RiPulseLine } from "react-icons/ri";
 import { BiSupport } from "react-icons/bi";
 import { BsBell } from "react-icons/bs";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
+import profileboy from "../assets/landing/profileboy.png";
+import profilegirl from "../assets/landing/profilegirl.png";
 import avatar from "../assets/landing/Top.png";
-import avatar2 from "../assets/landing/Footer.png";
+
 
 function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -14,6 +16,13 @@ function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isLoggedIn = !!localStorage.getItem('user');
+  let profileImage = profileboy; 
+  try {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.profileType === "girl") profileImage = profilegirl;
+    else if (user && user.profileType === "boy") profileImage = profileboy;
+    else if (user && user.name && user.name.toLowerCase() === "sakthi priya") profileImage = profilegirl;
+  } catch {}
 
   useEffect(() => {
     const updateUserName = () => {
@@ -103,7 +112,7 @@ function Sidebar() {
         <div className={styles.userProfile} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {isLoggedIn ? (
             <>
-              <img src={avatar2} alt="Avatar" className={styles.profileImage} />
+              <img src={profileImage} alt="Avatar" className={styles.profileImage} />
               <span className={styles.userName} style={{ marginTop: 4 }}>{userName || "User"}</span>
               {isExpanded && (
                 <button

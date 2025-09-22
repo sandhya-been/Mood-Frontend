@@ -15,6 +15,28 @@ function Success() {
 useEffect(() => {
   if (!imageLoaded) return;
 
+  const emojiDetails = {
+    userId: localStorage.getItem('userId'), 
+    emojis: ["😊", "😢", "😡"] 
+  };
+
+  
+  fetch("http://localhost:5000/api/user/emojis", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(emojiDetails),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      // Optionally handle response
+      console.log("Emoji details stored:", data);
+    })
+    .catch((err) => {
+      console.error("Error storing emoji details:", err);
+    });
+
   const interval = setInterval(() => {
     confetti({
       particleCount: 80,
@@ -74,19 +96,8 @@ useEffect(() => {
             </button>
           </div>
 
-          <div className={styles.recommendationsSection}>
-            <h2 className={styles.sectionTitle}>My Recommendations</h2>
-            <img
-              src={recommendationsImg}
-              alt="Recommendations"
-              className={styles.recommendationsImage}
-              onLoad={handleImageLoad}
-            />
-          </div>
+          {/* Recommendations section removed as requested */}
 
-          <button className={styles.exploreButton}>
-            Explore other features
-          </button>
         </div>
       </div>
 
