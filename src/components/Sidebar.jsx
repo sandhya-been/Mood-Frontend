@@ -16,13 +16,36 @@ function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isLoggedIn = !!localStorage.getItem('user');
-  let profileImage = profileboy; 
-  try {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.profileType === "girl") profileImage = profilegirl;
-    else if (user && user.profileType === "boy") profileImage = profileboy;
-    else if (user && user.name && user.name.toLowerCase() === "sakthi priya") profileImage = profilegirl;
-  } catch {}
+  const [profileImage, setProfileImage] = useState(profileboy);
+  useEffect(() => {
+    const updateProfileImage = () => {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.name) {
+          fetch(`https://api.genderize.io?name=${encodeURIComponent(user.name.split(' ')[0])}`)
+            .then(res => res.json())
+            .then(data => {
+              if (data.gender === 'female') {
+                setProfileImage(profilegirl);
+              } else {
+                setProfileImage(profileboy);
+              }
+            })
+            .catch(() => setProfileImage(profileboy));
+        } else {
+          setProfileImage(profileboy);
+        }
+      } catch {
+        setProfileImage(profileboy);
+      }
+    };
+    updateProfileImage();
+    const onStorage = (e) => {
+      if (e.key === 'user') updateProfileImage();
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [location]);
 
   useEffect(() => {
     const updateUserName = () => {
