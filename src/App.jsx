@@ -17,7 +17,6 @@ function App() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [userName, setUserName] = useState("");
 
-  // Update userName on route change or when localStorage changes
   useEffect(() => {
     const updateUserName = () => {
       const user = localStorage.getItem("user");
