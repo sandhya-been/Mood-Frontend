@@ -24,7 +24,6 @@ function EmotionResults() {
   const navigate = useNavigate();
   const { emotionResults } = location.state || { emotionResults: [] };
   const [text, setText] = useState("");
-  const [image, setImage] = useState(null);
   const maxChars = 500;
 
   const handleTextChange = (e) => {
@@ -33,22 +32,10 @@ function EmotionResults() {
     }
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleComplete = () => {
     const finalResults = {
       emotions: emotionResults,
       reflection: text,
-      image: image,
     };
     navigate("/select-activity", { state: { results: finalResults } });
   };
@@ -57,7 +44,6 @@ function EmotionResults() {
     const finalResults = {
       emotions: emotionResults,
       reflection: text,
-      image: image,
     };
     navigate("/select-activity", { state: { results: finalResults } });
   };
@@ -80,15 +66,6 @@ function EmotionResults() {
             className={styles.textarea}
             maxLength={maxChars}
           />
-          <label className={styles.imageUpload}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              hidden
-            />
-            <BsImageFill />
-          </label>
           <div className={styles.charCount}>
             {text.length}/{maxChars} characters
           </div>

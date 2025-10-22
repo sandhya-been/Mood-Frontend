@@ -1,0 +1,438 @@
+.wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #4a154b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.viewToggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.viewButton {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.viewButton.active {
+  background: #4a154b;
+  color: white;
+}
+
+.reflectionText {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+  max-height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.emotionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  display: inline-block;
+}
+
+.emotionsSection h4 {
+  color: #e91e63; /* Pink for emotions */
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.emotionsSection h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #e91e63, transparent);
+  border-radius: 2px;
+}
+
+.reflectionSection h4 {
+  color: #2196f3; /* Blue for reflection */
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.reflectionSection h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #2196f3, transparent);
+  border-radius: 2px;
+}
+
+.activitiesSection h4 {
+  color: #4caf50; /* Green for activities */
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.activitiesSection h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4caf50, transparent);
+  border-radius: 2px;
+}
+
+.emotionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  border: 2px solid;
+  font-size: 0.8rem;
+}
+
+.emotionName {
+  font-weight: 500;
+}
+
+.activitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.activityTag {
+  background: #f5f5f5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  padding: 2rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dateSelector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dateInput,
+.weekSelect,
+.monthInput {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.emotionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.moodBox {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 200px;
+}
+
+.moodBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.moodDate {
+  font-weight: 600;
+  color: #4a154b;
+  font-size: 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.moodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emotionsSection,
+.reflectionSection,
+.activitiesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.emotionsSection h4,
+.reflectionSection h4,
+.activitiesSection h4 {
+  color: #4a154b;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.emotionsSection h4::after,
+.reflectionSection h4::after,
+.activitiesSection h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4a154b, transparent);
+  border-radius: 2px;
+}
+
+.emotionsSection h4 {
+  color: #e91e63;
+}
+
+.reflectionSection h4 {
+  color: #2196f3;
+}
+
+.activitiesSection h4 {
+  color: #4caf50;
+}
+
+.emotionsSection h4::after {
+  background: linear-gradient(to right, #e91e63, transparent);
+}
+
+.reflectionSection h4::after {
+  background: linear-gradient(to right, #2196f3, transparent);
+}
+
+.activitiesSection h4::after {
+  background: linear-gradient(to right, #4caf50, transparent);
+}
+
+.noData {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.emptyIcon {
+  width: 64px;
+  height: 64px;
+  color: #4a154b;
+  opacity: 0.6;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pageButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #4a154b;
+  border-radius: 4px;
+  background: white;
+  color: #4a154b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: #4a154b;
+  color: white;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  color: #666;
+}
+
+.noDataContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 300px;
+}
+
+.noDataText {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.todayButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4a154b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todayButton:hover {
+  background-color: #3c1139;
+  transform: translateY(-1px);
+}
+
+.weekSelect {
+  min-width: 200px;
+  max-width: 300px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #4a154b;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a154b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+}
+
+.weekSelect:focus {
+  outline: none;
+  border-color: #4a154b;
+  box-shadow: 0 0 0 2px rgba(74, 21, 75, 0.1);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .viewToggle {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .moodGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .noDataContent {
+    padding: 2rem 1rem;
+  }
+
+  .noDataText {
+    font-size: 1rem;
+  }
+
+  .weekSelect {
+    min-width: 100%;
+  }
+}

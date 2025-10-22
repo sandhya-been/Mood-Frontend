@@ -95,10 +95,18 @@
 
 .icon {
   font-size: 1.5rem;
-  min-width: 24px;
+  min-width: 4px;
   display: flex;
   align-items: center;
+  gap: 5px;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+.icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
 .label {
@@ -191,6 +199,16 @@
   .userName {
     font-size: 0.8rem;
   }
+
+  .icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .expanded .icon img {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -234,6 +252,16 @@
     height: 20px;
     right: -10px;
     top: 15px;
+  }
+
+  .icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .expanded .icon img {
+    width: 28px;
+    height: 28px;
   }
 }
 

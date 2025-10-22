@@ -57,34 +57,49 @@ function SelectActivity() {
 
     const payload = {
       emotions: emotionResults?.map((emotion) => ({
-        name: emotion.emotion,
-        keywords: emotion.stages,
+        emotion: emotion.emotion,
+        intensity: emotion.intensity,
+        stages: emotion.stages,
+        color: emotion.color,
       })),
       reflection: reflection,
       activities: selectedActivities,
-      timestamp: new Date().toISOString(),
     };
 
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (!userData || !userData.token || !userData._id) { // Check for _id
+        setError("Please login again");
+        navigate('/login');
+        return;
+      }
+
+      const response = await fetch("http://localhost:5000/api/moods/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userData.token}`
+        },
+        body: JSON.stringify({
+          ...payload,
+          userId: userData._id // Use the stored _id
+        })
+      });
 
       if (response.ok) {
         navigate("/success", {
           state: {
-            message: "Your mood check-in has been recorded!",
-          },
+            message: "Your mood check-in has been recorded!"
+          }
         });
+      } else if (response.status === 401) {
+        // Handle unauthorized error
+        localStorage.removeItem('user'); // Clear invalid token
+        setError("Session expired. Please login again");
+        navigate('/login');
       } else {
-        setError("Failed to submit. Please try again.");
+        const errorData = await response.json();
+        setError(errorData.message || "Failed to submit. Please try again.");
       }
     } catch (error) {
       console.error("API error:", error);

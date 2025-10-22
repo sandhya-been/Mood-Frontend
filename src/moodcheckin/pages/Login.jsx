@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
@@ -23,9 +22,14 @@ function Login() {
         setError(data.message || "Login failed");
         return;
       }
-   
+ 
       const name = (data.firstName || "") + (data.lastName ? " " + data.lastName : "");
-      localStorage.setItem("user", JSON.stringify({ name, email: data.email, token: data.token }));
+      localStorage.setItem("user", JSON.stringify({ 
+        _id: data._id, // Add this line
+        name, 
+        email: data.email, 
+        token: data.token 
+      }));
       navigate("/");
     } catch (err) {
       setError("Server error. Please try again later.");

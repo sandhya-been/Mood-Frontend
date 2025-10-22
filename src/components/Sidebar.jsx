@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import { RiHome5Line, RiPulseLine } from "react-icons/ri";
-import { BiSupport } from "react-icons/bi";
+import { MdPerson } from "react-icons/md";
 import { BsBell } from "react-icons/bs";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import profileboy from "../assets/landing/profileboy.png";
 import profilegirl from "../assets/landing/profilegirl.png";
-import avatar from "../assets/landing/Top.png";
+import avatar from "../assets/landing/logo.jpg";
 
 
 function Sidebar() {
@@ -82,8 +82,8 @@ function Sidebar() {
   const menuItems = [
     { icon: <RiHome5Line />, label: "Dashboard", path: "/" },
     { icon: <RiPulseLine />, label: "Activity", path: "/activity" },
-    { icon: <BsBell />, label: "Notifications", path: "/notifications" },
-    { icon: <BiSupport />, label: "Support", path: "/support" },
+    { icon: <BsBell />, label: "Insights", path: "/insights" },
+    { icon: <MdPerson />, label: "About Profile", path: "/profile" },
   ];
 
   useEffect(() => {
@@ -103,8 +103,8 @@ function Sidebar() {
   return (
     <aside className={`${styles.sidebar} ${isExpanded ? styles.expanded : ""}`}> 
       <div className={styles.icon}> 
-        <img src={avatar} alt="Harmone" />
-        {isExpanded && <span style={{ color: "green" }}>Harmone</span>}
+        <img src={avatar} alt="MoodTracker" />
+        {isExpanded && <span style={{ color: "green" }}>Mood Tracker</span>}
       </div>
 
       <button
@@ -136,7 +136,9 @@ function Sidebar() {
           {isLoggedIn ? (
             <>
               <img src={profileImage} alt="Avatar" className={styles.profileImage} />
-              <span className={styles.userName} style={{ marginTop: 4 }}>{userName || "User"}</span>
+              <span className={styles.userName} style={{ marginTop: 4 }}>
+                {isExpanded ? userName : userName.split(' ')[0]}
+              </span>
               {isExpanded && (
                 <button
                   className={styles.logoutButton}

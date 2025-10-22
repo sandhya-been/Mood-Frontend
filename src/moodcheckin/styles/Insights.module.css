@@ -1,0 +1,138 @@
+.wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #4a154b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 1rem;
+}
+
+.viewButton {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.viewButton.active {
+  background: #4a154b;
+  color: white;
+}
+
+.dateSelector {
+  display: flex;
+  gap: 1rem;
+}
+
+.dateInput,
+.weekInput,
+.monthInput {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.chartContainer {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartContainer h3 {
+  color: #4a154b;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.chartContainer > div {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .viewToggle {
+    justify-content: center;
+  }
+
+  .dateSelector {
+    justify-content: center;
+  }
+
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chartContainer {
+    height: 250px;
+  }
+}

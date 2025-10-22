@@ -8,6 +8,9 @@ import Success from "../moodcheckin/pages/Success";
 import Analytics from '../moodcheckin/pages/Analytics';
 import Login from '../moodcheckin/pages/Login';
 import Signup from '../moodcheckin/pages/Signup';
+import Activity from '../moodcheckin/pages/Activity';
+import Insights from "../moodcheckin/pages/Insights";
+import AboutProfile from "../moodcheckin/pages/AboutProfile"
 
 function AppRoutes() {
   return (
@@ -21,6 +24,9 @@ function AppRoutes() {
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/activity" element={<Activity />} />
+      <Route path="/insights" element={<Insights />} />
+      <Route path="/profile" element={<AboutProfile/>} />
     </Routes>
   );
 }
